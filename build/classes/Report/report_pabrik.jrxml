@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_pabrik" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="742b75a0-35ce-47f7-b14c-18d3625d4127">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     t_pabrik.`kd_pabrik` AS t_pabrik_kd_pabrik,
+     t_pabrik.`nama_pbrk` AS t_pabrik_nama_pbrk,
+     t_pabrik.`alamat` AS t_pabrik_alamat,
+     t_pabrik.`telepon` AS t_pabrik_telepon,
+     t_pabrik.`keterangan` AS t_pabrik_keterangan
+FROM
+     `t_pabrik` t_pabrik]]>
+	</queryString>
+	<field name="t_pabrik_kd_pabrik" class="java.lang.String"/>
+	<field name="t_pabrik_nama_pbrk" class="java.lang.String"/>
+	<field name="t_pabrik_alamat" class="java.lang.String"/>
+	<field name="t_pabrik_telepon" class="java.lang.String"/>
+	<field name="t_pabrik_keterangan" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement uuid="26543e26-0527-4f96-8497-9e0b7722f939" mode="Opaque" x="0" y="0" width="636" height="66" backcolor="#009999"/>
+				<staticText>
+					<reportElement uuid="adbde4f3-e33b-43e6-81b8-d0eddba1db23" style="Title" x="0" y="0" width="370" height="66"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font size="36" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Laporan Data Vendor]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement uuid="6c49bfa4-d8f2-4564-913d-7d6f07d426f2" mode="Opaque" x="0" y="70" width="636" height="32" forecolor="#000000" backcolor="#00CCCC"/>
+			</frame>
+			<image>
+				<reportElement uuid="b40f1a2a-1a74-4948-9655-f74f0eaf83a8" x="639" y="0" width="163" height="102"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="bf051330-0916-41df-b30d-d3a9d19b7f44" style="Column header" x="0" y="0" width="159" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Kode Vendor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c09a53ff-fead-481a-823e-3707e7909a04" style="Column header" x="159" y="0" width="159" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nama Vendor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f47514f4-9a8e-484b-98fd-1d4f879ab739" style="Column header" x="318" y="0" width="196" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="22d26d86-55bb-428e-a7c3-0a86070d8a53" style="Column header" x="514" y="0" width="122" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Telepon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="73215e14-9bb7-4781-b910-39a2fda07010" style="Column header" x="636" y="0" width="159" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Keterangan]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement uuid="112b3b66-7146-44da-ac40-e3f50afca936" style="Row" mode="Opaque" x="0" y="0" width="797" height="18"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="6d3ad75a-dbfa-488f-9b76-08fb732ba288" style="Detail" positionType="Float" x="0" y="0" width="159" height="18"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_pabrik_kd_pabrik}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="62ad294a-773b-4151-8fe2-419911427241" style="Detail" positionType="Float" x="159" y="0" width="159" height="18"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_pabrik_nama_pbrk}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="02b3a212-211d-4c93-8640-9b349a886ca1" style="Detail" positionType="Float" x="318" y="0" width="196" height="18"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_pabrik_alamat}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="bb4f4ae8-20fe-4673-b285-1f7fbce5ff9a" style="Detail" positionType="Float" x="514" y="0" width="122" height="18"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_pabrik_telepon}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="1ae7339a-5934-4e8f-bf1e-3b0b44afc682" style="Detail" positionType="Float" x="636" y="0" width="159" height="18"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_pabrik_keterangan}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="117" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="61c98d5e-5a49-4437-b5f3-130b64d1fcbe" x="553" y="102" width="248" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pimpinan PT. Multimedia Nusantara]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c2b3ea72-5289-4637-abc6-d240c0131d4a" x="553" y="0" width="93" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12"/>
+				</textElement>
+				<text><![CDATA[Jakarta,]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="0f963607-4507-438e-9ab8-e47d66e1aaef" x="611" y="0" width="186" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="2afcc4f8-12a1-45d2-9787-be0782f1159a" mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000"/>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

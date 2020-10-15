@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_pengeluaranbarangid" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c65f8925-be6d-403d-b576-7eb65f9a6180">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="kd_pengeluaran" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     t_detailpeng.`kd_barang` AS t_detailpeng_kd_barang,
+     t_detailpeng.`nama_barang` AS t_detailpeng_nama_barang,
+     t_detailpeng.`kuantitas` AS t_detailpeng_kuantitas,
+     t_peng.`kd_pelanggan` AS t_peng_kd_pelanggan,
+     t_peng.`kategori` AS t_peng_kategori,
+     t_peng.`nama_plngn` AS t_peng_nama_plngn,
+     t_peng.`kd_pengeluaran` AS t_peng_kd_pengeluaran,
+     t_peng.`tanggal` AS t_peng_tanggal
+FROM
+     `t_peng` t_peng LEFT JOIN `t_detailpeng` t_detailpeng ON t_peng.`kd_pengeluaran` = t_detailpeng.`kd_pengeluaran`
+
+where
+
+t_peng.kd_pengeluaran = $P{kd_pengeluaran}]]>
+	</queryString>
+	<field name="t_detailpeng_kd_barang" class="java.lang.String"/>
+	<field name="t_detailpeng_nama_barang" class="java.lang.String"/>
+	<field name="t_detailpeng_kuantitas" class="java.lang.Integer"/>
+	<field name="t_peng_kd_pelanggan" class="java.lang.String"/>
+	<field name="t_peng_kategori" class="java.lang.String"/>
+	<field name="t_peng_nama_plngn" class="java.lang.String"/>
+	<field name="t_peng_kd_pengeluaran" class="java.lang.String"/>
+	<field name="t_peng_tanggal" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="228" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b6f119dd-fdda-44a8-b556-45713d32b6b9" style="Column header" x="114" y="152" width="12" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b6f119dd-fdda-44a8-b556-45713d32b6b9" style="Column header" x="114" y="172" width="12" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b6f119dd-fdda-44a8-b556-45713d32b6b9" style="Column header" x="2" y="134" width="122" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kode Cabang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b6f119dd-fdda-44a8-b556-45713d32b6b9" style="Column header" x="2" y="172" width="111" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kode Cabang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b6f119dd-fdda-44a8-b556-45713d32b6b9" style="Column header" x="113" y="208" width="12" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b6f119dd-fdda-44a8-b556-45713d32b6b9" style="Column header" x="2" y="152" width="111" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b6f119dd-fdda-44a8-b556-45713d32b6b9" style="Column header" x="114" y="134" width="12" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b6f119dd-fdda-44a8-b556-45713d32b6b9" style="Column header" x="3" y="208" width="111" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Cabang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b6f119dd-fdda-44a8-b556-45713d32b6b9" style="Column header" x="3" y="190" width="111" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kategori]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b6f119dd-fdda-44a8-b556-45713d32b6b9" style="Column header" x="114" y="190" width="12" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="1866f3ce-271a-4bac-9b1b-cb72b8563a94" x="126" y="134" width="186" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_peng_kd_pengeluaran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c5705283-fc55-4b3f-a442-b0ace62d8f5e" x="126" y="186" width="163" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_peng_kategori}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e19a37f9-6aa0-439b-8122-c0b633d5e9cd" x="126" y="206" width="163" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_peng_nama_plngn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d3163904-60b0-4723-925f-13a0c05e6283" x="126" y="170" width="163" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_peng_kd_pelanggan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b24df305-951a-427b-8fb3-4621ebcb81e8" x="126" y="152" width="138" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_peng_tanggal}.toString()]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement uuid="ee0c0197-4069-43f8-aae3-9bfb5459cf11" mode="Opaque" x="0" y="0" width="392" height="95" backcolor="#009999"/>
+				<staticText>
+					<reportElement uuid="cb7e6e99-5a14-449c-86a6-c389606d03b9" style="Title" x="0" y="8" width="392" height="74"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font size="25" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Laporan Data Pengeluaran Perangkat              Per Kode]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement uuid="5f1a18e8-a0f5-4728-85c0-7b27167e07fe" mode="Opaque" x="0" y="100" width="555" height="32" forecolor="#000000" backcolor="#009999"/>
+			</frame>
+			<image>
+				<reportElement uuid="b40f1a2a-1a74-4948-9655-f74f0eaf83a8" x="392" y="0" width="163" height="95"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1a2b4cb4-3826-4119-8e65-422a29eecb61" style="Column header" x="0" y="7" width="185" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Kode Perangkat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9f79c4df-2751-4abb-b8a5-fa8871cd5577" style="Column header" x="185" y="7" width="185" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nama Perangkat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b4b0fee1-dfe6-4459-8a28-9bd33f46f52c" style="Column header" x="370" y="7" width="185" height="18" forecolor="#000000"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Kuantitas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement uuid="1993c13f-673f-43a5-bf2c-5570c1fcf763" style="Row" mode="Opaque" x="0" y="0" width="555" height="18"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="ebf4f2d4-7b0d-49d1-8390-c2fbdc5371af" style="Detail" positionType="Float" x="0" y="0" width="185" height="18"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_detailpeng_kd_barang}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="82315903-fa8d-4357-8b44-75e28b1e6538" style="Detail" positionType="Float" x="185" y="0" width="185" height="18"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_detailpeng_nama_barang}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="3ae3fc09-d78b-41a6-b2e9-75878854bee8" style="Detail" positionType="Float" x="370" y="0" width="185" height="18"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{t_detailpeng_kuantitas}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="117" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="c2b3ea72-5289-4637-abc6-d240c0131d4a" x="306" y="0" width="93" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12"/>
+				</textElement>
+				<text><![CDATA[Jakarta,]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="0f963607-4507-438e-9ab8-e47d66e1aaef" x="364" y="0" width="191" height="15"/>
+				<textElement>
+					<font fontName="Verdana" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="61c98d5e-5a49-4437-b5f3-130b64d1fcbe" x="306" y="102" width="248" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pimpinan PT. Multimedia Nusantara]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="0522a6b1-1287-43dd-9e29-ce7b530dd9f3" mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000"/>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
